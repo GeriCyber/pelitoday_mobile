@@ -16,10 +16,16 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-      children: [
-        CardSwipper()
-      ]
-    ));
+      body: SingleChildScrollView(child: 
+        Column(
+          children: [
+            // Main cards
+            CardSwipper(),
+            // Movies slider
+            MovieSlider(),
+          ]
+        )
+      )
+    );
   }
 }
