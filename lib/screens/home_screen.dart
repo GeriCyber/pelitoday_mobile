@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:pelitoday/providers/movies_provider.dart';
 import 'package:pelitoday/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final moviesProvider = Provider.of<MoviesProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('PeliToday'),
@@ -20,9 +25,12 @@ class HomeScreen extends StatelessWidget {
         Column(
           children: [
             // Main cards
-            CardSwipper(),
+            CardSwipper(movies: moviesProvider.onDisplayMovies),
             // Movies slider
-            MovieSlider(),
+            MovieSlider(
+                movies: moviesProvider.popularMovies, 
+                title: 'Most Popular Movies'
+              ),
           ]
         )
       )
