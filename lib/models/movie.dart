@@ -19,23 +19,32 @@ class Movie {
     });
 
     bool adult;
-    String backdropPath;
     List<int> genreIds;
     int id;
     String originalLanguage;
     String originalTitle;
     String overview;
     double popularity;
+    String? backdropPath;
     String? posterPath;
     String? releaseDate;
     String title;
     bool video;
     double voteAverage;
     int voteCount;
+    String? heroId;
 
     get fullPosterImg {
       if(this.posterPath != null) {
         return 'https://image.tmdb.org/t/p/w500${this.posterPath}';
+      } else {
+        return 'https://i.stack.imgur.com/GNhxO.png';
+      }
+    }
+
+    get fullBackdropPathImg {
+      if(this.backdropPath != null) {
+        return 'https://image.tmdb.org/t/p/w500${this.backdropPath}';
       } else {
         return 'https://i.stack.imgur.com/GNhxO.png';
       }

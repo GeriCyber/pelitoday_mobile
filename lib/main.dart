@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
+      title: 'PeliToday Mobile',
       initialRoute: 'home',
       routes: {
         'home': (_) => HomeScreen(),
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       },
       theme: ThemeData.dark().copyWith(
         appBarTheme: AppBarTheme(
-          color: Colors.greenAccent
+          color: Colors.blueGrey
         )
       )
     );

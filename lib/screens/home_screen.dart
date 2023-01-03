@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pelitoday/models/search_delegate.dart';
 import 'package:pelitoday/providers/movies_provider.dart';
 import 'package:pelitoday/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.search_outlined),
-            onPressed: () {}
+            onPressed: () => showSearch(context: context, delegate: MovieSearchDelegate())
           )
         ],
       ),
@@ -29,7 +30,8 @@ class HomeScreen extends StatelessWidget {
             // Movies slider
             MovieSlider(
                 movies: moviesProvider.popularMovies, 
-                title: 'Most Popular Movies'
+                title: 'Most Popular Movies',
+                onNextPage: () => moviesProvider.getPopularMovies(),
               ),
           ]
         )
