@@ -80,7 +80,7 @@ class _CastCard extends StatelessWidget {
               image: NetworkImage(actor.fullProfileImg),
               placeholder: AssetImage('assets/loading.gif'),
               height: 140,
-              width: 100,
+              // width: 100,
               fit: BoxFit.contain,
             ),
           ),
