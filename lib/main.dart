@@ -33,10 +33,13 @@ class MyApp extends StatelessWidget {
         'home': (_) => HomeScreen(),
         'details': (_) => DetailsScreen()
       },
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData(
         appBarTheme: AppBarTheme(
-          color: Colors.blueGrey
-        )
+          color: Colors.grey.shade900,
+          titleTextStyle: TextStyle(fontFamily: 'Pacifico', fontSize: 25, color: Colors.greenAccent.shade200)
+        ),
+        brightness: Brightness.dark,
+        // fontFamily: 
       )
     );
   }

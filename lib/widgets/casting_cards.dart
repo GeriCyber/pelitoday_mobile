@@ -28,11 +28,11 @@ class CastingCards extends StatelessWidget {
         final List<Cast> cast = snapshot.data!;
 
         return Container(
-          margin: EdgeInsets.only(bottom: 30.0, top: 20.0),
+          margin: EdgeInsets.only(bottom: 30.0, top: 10.0),
           width: double.infinity,
           height: 180,
           child: ListView.builder(
-            itemCount: 10,
+            itemCount: cast.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) => _CastCard(cast[index])
           ),
@@ -71,6 +71,10 @@ class _CastCard extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Lato',
+              fontSize: 12
+            ),
           ),
         ]
       ),

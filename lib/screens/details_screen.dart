@@ -16,8 +16,16 @@ class DetailsScreen extends StatelessWidget {
           SliverList(delegate: SliverChildListDelegate([
             _PosterAndTitle(movie),
             _Overview(movie),
-            _Overview(movie),
-            _Overview(movie),
+            Container(
+              margin: EdgeInsets.only(left: 20, top: 18),
+              child: Text('Cast',
+                style: TextStyle(
+                  fontSize: 20, 
+                  fontWeight: FontWeight.bold, 
+                  fontFamily: 'Lato'
+                )
+              ),
+            ),
             CastingCards(movie.id)
           ]))
         ]
@@ -34,7 +42,7 @@ class _CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: Colors.indigo,
+      backgroundColor: Colors.grey.shade900,
       expandedHeight: 200,
       floating: false,
       pinned: true,
@@ -48,7 +56,10 @@ class _CustomAppBar extends StatelessWidget {
           color: Colors.black12,
           child: Text(
             movie.title,
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(
+              fontFamily: 'Pacifico',
+              fontSize: 16
+            ),
             textAlign: TextAlign.center,
           ),
         ),
@@ -73,6 +84,7 @@ class _PosterAndTitle extends StatelessWidget {
 
     final TextTheme textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
+    final date = movie.releaseDate != null && movie.releaseDate != '' ? DateTime.parse(movie.releaseDate!).year : '';
 
     return Container(
       margin: EdgeInsets.only(top: 20),
@@ -90,9 +102,7 @@ class _PosterAndTitle extends StatelessWidget {
               )
             ),
           ),
-
           SizedBox(width: 20),
-
           ConstrainedBox(
             constraints: BoxConstraints(maxWidth: size.width - 190),
             child: 
@@ -101,17 +111,33 @@ class _PosterAndTitle extends StatelessWidget {
                 children: [
                 Text(
                   movie.title,
-                  style: textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2,
+                  maxLines: 4,
+                  style: TextStyle(
+                    overflow: TextOverflow.ellipsis, 
+                    fontFamily: 'Lato',
+                    fontSize: 22,
+                  )
                 ),
+                Padding(padding: EdgeInsets.only(bottom: 4)),
                 Text(
-                  movie.originalTitle,
-                  style: textTheme.subtitle1, overflow: TextOverflow.ellipsis, maxLines: 2,
+                  '$date',
+                  maxLines: 2,
+                  style: TextStyle( 
+                    fontFamily: 'Lato',
+                    fontSize: 13
+                  )
                 ),
+                Padding(padding: EdgeInsets.only(bottom: 7)),
                 Row(
                   children: [
-                    Icon(Icons.star_outline, color: Colors.grey, size: 20),
+                    Icon(Icons.star, color: Colors.amber.shade400, size: 20),
                     SizedBox(width: 5),
-                    Text('${movie.voteAverage}', style: textTheme.caption)
+                    Text('${movie.voteAverage}', 
+                      style: TextStyle(
+                        fontFamily: 'Lato',
+                        fontSize: 13
+                      )
+                    )
                   ]
                 )
               ]
@@ -135,7 +161,10 @@ class _Overview extends StatelessWidget {
       child: Text(
         movie.overview,
         textAlign: TextAlign.justify,
-        style: Theme.of(context).textTheme.subtitle1,
+        style: TextStyle(
+          fontFamily: 'Lato',
+          fontSize: 17
+        ),
       )
     );
   }

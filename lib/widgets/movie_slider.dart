@@ -48,7 +48,14 @@ class _MovieSliderState extends State<MovieSlider> {
           children: [
             if(this.widget.title != null) 
               Padding(padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Text(this.widget.title!, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+                child: Text(
+                  this.widget.title!, 
+                  style: TextStyle(
+                    fontSize: 20, 
+                    fontWeight: FontWeight.bold, 
+                    fontFamily: 'Lato'
+                  )
+                )
               ),
             SizedBox(height: 10),
             Expanded(
@@ -104,6 +111,9 @@ class _MoviePoster extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'Lato',
+              ),
             )
         
         ]

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pelitoday/models/search_delegate.dart';
+import 'package:pelitoday/screens/search_delegate.dart';
 import 'package:pelitoday/providers/movies_provider.dart';
 import 'package:pelitoday/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +26,10 @@ class HomeScreen extends StatelessWidget {
         Column(
           children: [
             // Main cards
-            CardSwipper(movies: moviesProvider.onDisplayMovies),
+            CardSwipper(
+              movies: moviesProvider.onDisplayMovies,
+              title: 'Now Playing',
+            ),
             // Movies slider
             MovieSlider(
                 movies: moviesProvider.popularMovies, 
