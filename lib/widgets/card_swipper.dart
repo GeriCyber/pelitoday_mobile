@@ -20,7 +20,12 @@ class CardSwipper extends StatelessWidget {
       return Container(
         width: double.infinity,
         height: size.height * 0.5,
-        child: Center(child: CircularProgressIndicator())
+        child: Center(
+          child: CircularProgressIndicator(
+            color: Colors.greenAccent.shade200,
+            strokeWidth: 5.0,
+          )
+        )
       );
     }
 

@@ -16,16 +16,6 @@ class DetailsScreen extends StatelessWidget {
           SliverList(delegate: SliverChildListDelegate([
             _PosterAndTitle(movie),
             _Overview(movie),
-            Container(
-              margin: EdgeInsets.only(left: 20, top: 18),
-              child: Text('Cast',
-                style: TextStyle(
-                  fontSize: 20, 
-                  fontWeight: FontWeight.bold, 
-                  fontFamily: 'Lato'
-                )
-              ),
-            ),
             CastingCards(movie.id)
           ]))
         ]
@@ -63,7 +53,6 @@ class _CustomAppBar extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-
         background: FadeInImage(
           image: NetworkImage(movie.fullBackdropPathImg),
           placeholder: AssetImage('assets/loading.gif'),

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+
 class CastResponse {
     CastResponse({
         required this.id,
@@ -53,11 +55,11 @@ class Cast {
     String? department;
     String? job;
 
-    get fullProfileImg {
+    String get fullProfileImg {
       if(this.profilePath != null) {
         return 'https://image.tmdb.org/t/p/w500${this.profilePath}';
       } else {
-        return 'https://i.stack.imgur.com/GNhxO.png';
+        return 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png';
       }
     }
 

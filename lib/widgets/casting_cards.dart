@@ -13,7 +13,7 @@ class CastingCards extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
-    
+
     return FutureBuilder(
       future: moviesProvider.getMovieCast(movieId),
       builder: (_, AsyncSnapshot<List<Cast>> snapshot) {
@@ -27,16 +27,34 @@ class CastingCards extends StatelessWidget {
 
         final List<Cast> cast = snapshot.data!;
 
-        return Container(
-          margin: EdgeInsets.only(bottom: 30.0, top: 10.0),
-          width: double.infinity,
-          height: 180,
-          child: ListView.builder(
-            itemCount: cast.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) => _CastCard(cast[index])
-          ),
-        );
+        if(cast.isNotEmpty) {
+          return Column(
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.only(left: 20, top: 10),
+                child: Text('Cast',
+                  style: TextStyle(
+                    fontSize: 20, 
+                    fontWeight: FontWeight.bold, 
+                    fontFamily: 'Lato'
+                  )
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 30.0, top: 10.0),
+                width: double.infinity,
+                height: 180,
+                child: ListView.builder(
+                  itemCount: cast.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) => _CastCard(cast[index])
+                ),
+              )
+            ],
+          );
+        }
+        return SizedBox(height: 5);
       }
     );
   }
@@ -63,7 +81,7 @@ class _CastCard extends StatelessWidget {
               placeholder: AssetImage('assets/loading.gif'),
               height: 140,
               width: 100,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
           SizedBox(height: 5),

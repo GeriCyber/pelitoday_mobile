@@ -38,7 +38,7 @@ class Movie {
       if(this.posterPath != null) {
         return 'https://image.tmdb.org/t/p/w500${this.posterPath}';
       } else {
-        return 'https://i.stack.imgur.com/GNhxO.png';
+        return 'https://media.comicbook.com/files/img/default-movie.png';
       }
     }
 
@@ -46,7 +46,7 @@ class Movie {
       if(this.backdropPath != null) {
         return 'https://image.tmdb.org/t/p/w500${this.backdropPath}';
       } else {
-        return 'https://i.stack.imgur.com/GNhxO.png';
+        return 'https://brocku.ca/brock-news/wp-content/uploads/2022/10/GettyImages-1336937059-1600x728.jpg?x70330';
       }
     }
 
