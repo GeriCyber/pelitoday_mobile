@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pelitoday/models/movie.dart';
+import 'package:pelitoday/widgets/genre_chips.dart';
 import 'package:pelitoday/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -16,6 +17,7 @@ class DetailsScreen extends StatelessWidget {
           SliverList(delegate: SliverChildListDelegate([
             _PosterAndTitle(movie),
             _Overview(movie),
+            GenreChips(movie.id),
             CastingCards(movie.id)
           ]))
         ]

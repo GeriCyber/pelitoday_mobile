@@ -17,6 +17,7 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> onDisplayMovies = [];
   List<Movie> popularMovies = [];
   Map<int, List<Cast>> movieCast = {};
+  Map<int, List<Genre>> movieGenres = {};
   int _popularPage = 0;
 
   final debouncer = Debouncer(
@@ -51,7 +52,6 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   getPopularMovies() async {
-    print(_popularPage);
     _popularPage++;
     final requestData = await _getJsonData('3/movie/popular', _popularPage);
     final popularResponse = PopularResponse.fromJson(requestData);
@@ -67,6 +67,16 @@ class MoviesProvider extends ChangeNotifier {
     final castResponse = CastResponse.fromJson(requestData);
     movieCast[movieId] = castResponse.cast;
     return castResponse.cast;
+  }
+
+  Future<List<Genre>> getMovieGenres(int movieId) async {
+    if(movieGenres.containsKey(movieId)) {
+      return movieGenres[movieId]!;
+    }
+    final requestData = await _getJsonData('3/movie/$movieId', _popularPage);
+    final genresResponse = GenresResponse.fromJson(requestData);
+    movieGenres[movieId] = genresResponse.genres;
+    return genresResponse.genres;
   }
 
   Future<List<Movie>> searchMovies(String query) async {

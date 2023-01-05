@@ -60,7 +60,6 @@ class MovieSearchDelegate extends SearchDelegate {
     return StreamBuilder(
       stream: moviesProvider.suggestionStream,
       builder:(_, AsyncSnapshot<List<Movie>> snapshot) {
-        print(snapshot.connectionState);
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
             return Container(
